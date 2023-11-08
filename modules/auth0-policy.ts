@@ -12,9 +12,11 @@ export default async function (
   }
 
   const base64Payload = jwt.split('.')[1];
-  const payloadBuffer = Buffer.from(base64Payload, 'base64');
+  //const payloadBuffer = Buffer.from(base64Payload, 'base64');
+  const payloadBuffer = atob(base64Payload);
   console.log('payloadBuffer ' + payloadBuffer.toString());
   const updatedJwtPayload = JSON.parse(payloadBuffer.toString());
+  console.log('updatedJwtPayload ' + updatedJwtPayload);
   if (!request.headers['auth0UserId'])
     request.headers['auth0UserId'.toLowerCase()] = updatedJwtPayload.sub;
   if (!request.headers['organizationId'.toLowerCase()])
