@@ -1,0 +1,45 @@
+{
+  "policies": [
+    {
+      "handler": {
+        "export": "Auth0JwtInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "allowUnauthenticatedRequests": false,
+          "auth0Domain": "$env(AUTH0_DOMAIN)",
+          "audience": "$env(AUTH0_AUDIENCE)"
+        }
+      },
+      "name": "auth0-jwt-auth-inbound",
+      "policyType": "auth0-jwt-auth-inbound"
+    },
+    {
+      "handler": {
+        "export": "SetHeadersInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "headers": [
+            {
+              "name": "HEADER_NAME",
+              "value": "HEADER_VALUE",
+              "overwrite": true
+            }
+          ]
+        }
+      },
+      "name": "set-headers-inbound",
+      "policyType": "set-headers-inbound"
+    },
+    {
+      "handler": {
+        "export": "default",
+        "module": "$import(./modules/auth0-policy)",
+        "options": {
+          "allowUnauthenticatedRequests": false
+        }
+      },
+      "name": "auth0-policy",
+      "policyType": "custom-code"
+    }
+  ]
+}

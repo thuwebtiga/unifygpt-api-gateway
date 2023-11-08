@@ -1,0 +1,59 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My Zuplo API"
+  },
+  "paths": {
+    "/leads": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "get": {
+        "summary": "Crm leads ",
+        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "urlForwardHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "baseUrl": "https://unify-crm-api-dev.webtiga.com/"
+            }
+          },
+          "policies": {
+            "inbound": [
+              "auth0-policy"
+            ]
+          }
+        },
+        "operationId": "9bc35c11-8edd-4d33-b9e9-78aab418e58a"
+      }
+    },
+    "/customers": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "get": {
+        "summary": "crm customer apis ",
+        "description": "Crm apis",
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "urlForwardHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "baseUrl": "https://unify-crm-api-dev.webtiga.com/"
+            }
+          },
+          "policies": {
+            "inbound": [
+              "auth0-jwt-auth-inbound"
+            ]
+          }
+        },
+        "operationId": "d5936f43-57fa-4ec3-92d2-887c76da2d2f"
+      }
+    }
+  }
+}
