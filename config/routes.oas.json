@@ -54,6 +54,31 @@
         },
         "operationId": "d5936f43-57fa-4ec3-92d2-887c76da2d2f"
       }
+    },
+    "/dam": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "get": {
+        "summary": "DAM APIs",
+        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "urlForwardHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "baseUrl": "https://echo.zuplo.io"
+            }
+          },
+          "policies": {
+            "inbound": [
+              "auth0-policy"
+            ]
+          }
+        },
+        "operationId": "3c859f8c-67c9-4437-ba3b-93f89dcfa82a"
+      }
     }
   }
 }
