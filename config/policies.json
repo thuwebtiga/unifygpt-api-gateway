@@ -39,7 +39,7 @@
         }
       },
       "name": "auth0-policy",
-      "policyType": "custom-code"
+      "policyType": "custom-code-inbound"
     }
   ]
 }

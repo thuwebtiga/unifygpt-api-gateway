@@ -18,13 +18,14 @@ export default async function (
   const updatedJwtPayload = JSON.parse(payloadBuffer.toString());
   console.log('updatedJwtPayload ' + updatedJwtPayload);
   if (!request.headers['auth0UserId'])
-    request.headers['auth0UserId'.toLowerCase()] = updatedJwtPayload.sub;
+    request.headers.set('auth0UserId'.toLowerCase(), updatedJwtPayload.sub);
   if (!request.headers['organizationId'.toLowerCase()])
-    request.headers['organizationId'.toLowerCase()] = updatedJwtPayload.org_id;
+    request.headers.set('organizationId'.toLowerCase(), updatedJwtPayload.org_id);
   if (!request.headers['permissions'])
-    request.headers['permissions'] = (updatedJwtPayload.permissions || []).join(
-      ',',
-    );
+    request.headers.set('permissions', (updatedJwtPayload.permissions || []).join(','));
+
   //todo add code to call iam in here 
+  const response = await fetch("https://echo.zuplo.io");
+  request.headers.set("organizations", response.url);
   return request;
 }
