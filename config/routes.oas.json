@@ -23,6 +23,7 @@
           },
           "policies": {
             "inbound": [
+              "auth0-jwt-auth-inbound-1",
               "auth0-policy"
             ]
           }
