@@ -40,6 +40,19 @@
       },
       "name": "auth0-policy",
       "policyType": "custom-code"
+    },
+    {
+      "handler": {
+        "export": "Auth0JwtInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "allowUnauthenticatedRequests": false,
+          "auth0Domain": "$env(AUTH0_DOMAIN)",
+          "audience": "$env(AUTH0_AUDIENCE)"
+        }
+      },
+      "name": "auth0-jwt-auth-inbound-1",
+      "policyType": "auth0-jwt-auth-inbound"
     }
   ]
 }
